@@ -28,12 +28,14 @@ const HomePage = ({ todaySummary, onContinue }) => {
 
   return (
     <div className="space-y-6">
-      <header className={`transition-all duration-700 ${animated ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
-        <p className="text-sm text-slate-400">
-          {user ? `Welcome back, ${user.name}` : 'Welcome back'}
-        </p>
-        <h1 className="text-4xl font-bold text-white">IronFlow</h1>
-        <p className="mt-1 text-sm text-slate-500">Train consistently. Everything saves on-device.</p>
+      <header className={`flex items-center gap-3 transition-all duration-700 ${animated ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+        <img src="/icon.svg" alt="IronFlow" className="w-12 h-12" />
+        <div>
+          <p className="text-sm text-slate-400">
+            {user ? `Welcome back, ${user.name}` : 'Welcome back'}
+          </p>
+          <h1 className="text-4xl font-bold text-white">IronFlow</h1>
+        </div>
       </header>
 
       <div className={`relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-800/80 to-slate-900/80 border border-slate-700/50 transition-all duration-700 delay-100 ${animated ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>

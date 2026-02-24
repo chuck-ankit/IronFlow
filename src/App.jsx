@@ -39,7 +39,8 @@ const App = () => {
     <div className="min-h-screen bg-abyss">
       <div className="mx-auto flex w-full max-w-7xl flex-col lg:flex-row">
         <aside className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0 border-r border-slate-800 bg-abyss/80 backdrop-blur-sm">
-          <div className="flex h-20 items-center justify-center border-b border-slate-800">
+          <div className="flex h-20 items-center justify-center gap-3 border-b border-slate-800">
+            <img src="/icon.svg" alt="IronFlow" className="w-10 h-10" />
             <h1 className="text-2xl font-bold bg-gradient-to-r from-neon to-orange-500 bg-clip-text text-transparent">
               IronFlow
             </h1>
@@ -68,9 +69,12 @@ const App = () => {
 
         <main className="flex-1 lg:ml-64">
           <header className="flex items-center justify-between p-4 lg:hidden">
-            <h1 className="text-xl font-bold bg-gradient-to-r from-neon to-orange-500 bg-clip-text text-transparent">
-              IronFlow
-            </h1>
+            <div className="flex items-center gap-2">
+              <img src="/icon.svg" alt="IronFlow" className="w-8 h-8" />
+              <h1 className="text-xl font-bold bg-gradient-to-r from-neon to-orange-500 bg-clip-text text-transparent">
+                IronFlow
+              </h1>
+            </div>
             <UserProfile onOpenLogin={() => setIsLoginOpen(true)} />
           </header>
           <div className="mx-auto flex min-h-screen w-full max-w-xl flex-col px-4 pb-24 pt-6 lg:max-w-4xl">
