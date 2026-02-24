@@ -3,6 +3,7 @@ import workouts from './data/workouts';
 import { getTodayDateKey, getTodayWeekday, getWeekDateKeys, weekdayNames } from './utils/date';
 
 const STORAGE_KEY = 'ironflow-progress';
+const USER_KEY = 'ironflow-user';
 
 const readProgress = () => {
   if (typeof window === 'undefined') {
@@ -24,6 +25,29 @@ const readProgress = () => {
 const writeProgress = (progress) => {
   if (typeof window !== 'undefined') {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  }
+};
+
+const readUser = () => {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+  const saved = localStorage.getItem(USER_KEY);
+  if (!saved) return null;
+  try {
+    return JSON.parse(saved);
+  } catch {
+    return null;
+  }
+};
+
+const writeUser = (user) => {
+  if (typeof window !== 'undefined') {
+    if (user) {
+      localStorage.setItem(USER_KEY, JSON.stringify(user));
+    } else {
+      localStorage.removeItem(USER_KEY);
+    }
   }
 };
 
@@ -63,11 +87,14 @@ export const useWorkoutStore = create((set, get) => ({
   getTodaySummary: () => {
     const weekday = getTodayWeekday();
     const dateKey = getTodayDateKey();
+    const exercises = workouts[weekday]?.exercises ?? [];
+    const completedExercises = (get().progress[dateKey]?.completedExercises ?? []).length;
     return {
       weekday,
       dateKey,
       workout: workouts[weekday],
-      completion: completionForDate(get().progress, dateKey, weekday)
+      completion: completionForDate(get().progress, dateKey, weekday),
+      completedExercises
     };
   },
 
@@ -114,5 +141,30 @@ export const useWorkoutStore = create((set, get) => ({
       const weekday = weekdayNames[date.getDay()];
       return completionForDate(progress, dateKey, weekday) === 100;
     }).length;
-  }
+  },
+
+  getHoursTrained: () => {
+    const progress = get().progress;
+    const completedWorkouts = Object.entries(progress).filter(([dateKey]) => {
+      const date = new Date(`${dateKey}T00:00:00`);
+      const weekday = weekdayNames[date.getDay()];
+      return completionForDate(progress, dateKey, weekday) === 100;
+    }).length;
+    return Math.round(completedWorkouts * 1.0);
+  },
+
+  user: readUser(),
+
+  login: (email, name) => {
+    const user = { email, name, createdAt: new Date().toISOString() };
+    writeUser(user);
+    set({ user });
+  },
+
+  logout: () => {
+    writeUser(null);
+    set({ user: null });
+  },
+
+  isAuthenticated: () => !!get().user
 }));

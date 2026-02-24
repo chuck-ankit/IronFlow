@@ -8,7 +8,7 @@ const ExerciseItem = ({ exercise, checked, onToggle }) => (
   >
     <div>
       <h4 className={`font-medium ${checked ? 'text-neon' : 'text-white'}`}>{exercise.name}</h4>
-      <p className="text-sm text-slate-400">{exercise.sets} sets × {exercise.reps}</p>
+      <p className="text-sm text-slate-400">{exercise.sets}</p>
     </div>
     <CheckboxTracker checked={checked} onChange={onToggle} />
   </li>

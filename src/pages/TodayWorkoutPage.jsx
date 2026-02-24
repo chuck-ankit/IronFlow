@@ -18,7 +18,7 @@ const TodayWorkoutPage = ({ selectedDay, setSelectedDay }) => {
     <div className="space-y-5">
       <header>
         <p className="text-sm text-slate-400">Workout Plan</p>
-        <h2 className="text-2xl font-bold">{selectedDay} · {workout.focus}</h2>
+        <h2 className="text-2xl font-bold">{selectedDay} · {workout.title}</h2>
         <p className="mt-1 text-sm text-slate-500">Auto-saved locally for {dateKey}</p>
       </header>
 
