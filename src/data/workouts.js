@@ -1,6 +1,6 @@
 const workouts = {
-  Monday: {
-    title: "Push (Chest Power)",
+  Tuesday: {
+    title: "Push (Chest Power) [Moved from Monday]",
     exercises: [
       { id: "mon-1", name: "Barbell Bench Press", sets: "5x5" },
       { id: "mon-2", name: "Incline Dumbbell Press", sets: "4x10" },
@@ -15,7 +15,7 @@ const workouts = {
     ]
   },
 
-  Tuesday: {
+  Wednesday: {
     title: "Pull (Back Thickness)",
     exercises: [
       { id: "tue-1", name: "Deadlift", sets: "5x5" },
@@ -30,13 +30,13 @@ const workouts = {
     ]
   },
 
-  Wednesday: {
+  Thursday: {
     title: "Legs + Core",
     exercises: [
       { id: "wed-1", name: "Barbell Squat", sets: "5x5" },
       { id: "wed-2", name: "Leg Press", sets: "4x12" },
       { id: "wed-3", name: "Walking Lunges", sets: "3 rounds" },
-      { id: "wed-4", name: "Romanian Deadlift", sets: "4x10" },
+      { id: "wed-4", name: "Romanian Deadlift", sets: "3x10" }, // reduced slightly for recovery
       { id: "wed-5", name: "Leg Curl", sets: "4x12" },
       { id: "wed-6", name: "Standing Calf Raise", sets: "5x15" },
       { id: "wed-7", name: "Hanging Leg Raise", sets: "4x15" },
@@ -45,7 +45,7 @@ const workouts = {
     ]
   },
 
-  Thursday: {
+  Friday: {
     title: "Push (Shoulder Specialization)",
     exercises: [
       { id: "thu-1", name: "Overhead Press", sets: "4x6" },
@@ -58,7 +58,7 @@ const workouts = {
     ]
   },
 
-  Friday: {
+  Saturday: {
     title: "Pull (Lat + Arm FST-7)",
     exercises: [
       { id: "fri-1", name: "Wide Grip Lat Pulldown", sets: "4x10" },
@@ -71,7 +71,7 @@ const workouts = {
     ]
   },
 
-  Saturday: {
+  Sunday: {
     title: "Legs + Conditioning",
     exercises: [
       { id: "sat-1", name: "Hack Squat / Smith Squat", sets: "4x12" },
@@ -87,7 +87,7 @@ const workouts = {
     ]
   },
 
-  Sunday: {
+  Monday: {
     title: "Rest / Active Recovery",
     exercises: [
       { id: "sun-1", name: "Walking", sets: "8000-12000 steps" },
